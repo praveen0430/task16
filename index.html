@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Tasks</title>
+  <style>
+    body { 
+      margin: 0;
+      background-color: #fff7e6;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+    }
+
+    header {
+      height: 80px;
+      background-color: #5d3a00;
+      color: #fff;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      letter-spacing: 2px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .task {
+      background-color: #fbe5c8;
+      margin: 30px;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .task:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    h3 {
+      margin-top: 0;
+      color: #a0522d;
+    }
+
+    input[type="text"], input[type="email"] {
+      width: 90%;
+      padding: 10px;
+      margin-top: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #a0522d;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      margin: 5px;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    button:hover {
+      background-color: #7b3f00;
+      transform: scale(1.05);
+    }
+
+    #formResult, #dateTimeResult {
+      margin-top: 15px;
+      font-size: 1.1em;
+      color: #333;
+      white-space: pre-line;
+    }
+
+    img {
+      border-radius: 12px;
+      margin-top: 10px;
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      transition: opacity 0.5s ease-in-out;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    pre {
+      background: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    .center {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>TASK 16</header>
+
+<div class="task" id="task1">
+  <h3>1. Basic Information Form</h3>
+  <input type="text" id="name" placeholder="Name"><br>
+  <input type="email" id="email" placeholder="Email"><br>
+  <input type="text" id="phone" placeholder="Phone"><br>
+  <button onclick="showFormData()">Show Info</button>
+  <p id="formResult"></p>
+</div>
+
+<div class="task" id="task2">
+  <h3>2. Change Image</h3>
+  <div class="center">
+    <img id="myImage" src="https://static.toiimg.com/thumb/resizemode-4,width-1280,height-720,msid-112621799/112621799.jpg" alt="Rohit">
+    <br><br>
+    <button onclick="changeImage()">Change Image</button>
+  </div>
+</div>
+
+<div class="task" id="task3">
+  <h3>3. Font Size Changer</h3>
+  <p id="fontText" class="center">This is some sample text.</p>
+  <div class="center">
+    <button onclick="increaseFont()">Increase Font</button>
+    <button onclick="decreaseFont()">Decrease Font</button>
+  </div>
+</div>
+
+<div class="task" id="task4">
+  <h3>4. Show Current Date & Time</h3>
+  <div class="center">
+    <button onclick="showDateTime()">Show Date & Time</button>
+    <pre id="dateTimeResult"></pre>
+  </div>
+</div>
+
+<script>
+  // Task 1
+  function showFormData() {
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var phone = document.getElementById("phone").value;
+    document.getElementById("formResult").innerText = 
+      "Name: " + name + "\nEmail: " + email + "\nPhone: " + phone;
+  }
+
+  // Task 2
+  function changeImage() {
+    var img = document.getElementById("myImage");
+    img.style.opacity = 0;
+    setTimeout(function() {
+      img.src = "https://images.unsplash.com/photo-1506744038136-46273834b3fb";
+      img.style.opacity = 1;
+    }, 500);
+  }
+
+  // Task 3
+  let fontSize = 16;
+  function increaseFont() {
+    fontSize += 2;
+    document.getElementById("fontText").style.fontSize = fontSize + "px";
+  }
+  function decreaseFont() {
+    fontSize = Math.max(8, fontSize - 2);
+    document.getElementById("fontText").style.fontSize = fontSize + "px";
+  }
+
+  // Task 4
+  function showDateTime() {
+    const now = new Date();
+    document.getElementById("dateTimeResult").innerText = now.toString();
+  }
+</script>
+
+</body>
+</html>
